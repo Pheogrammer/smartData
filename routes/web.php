@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('newschool', 'SchoolController@newschool')->name('newschool')->middleware('auth');
+Route::post('savenewschool','SchoolController@savenewschool')->name('savenewschool')->middleware('auth');
+Route::get('schools','SchoolController@schools')->name('schools')->middleware('auth');
+
+Route::get('viewschool/{id}','SchoolController@viewschool')->name('viewschool')->middleware('auth');
+Route::get('newstudent','StudentController@newstudent')->name('newstudent')->middleware('auth');
+////
+
