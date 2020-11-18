@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    use App\student;
+@endphp
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -30,7 +33,7 @@
        <div class="card-body">
            <p class="card-text">
                @if (count($school)>1)
-               <table class="table table-light">
+               <table class="table table-light table-striped">
                 <thead class="thead-light">
                     <tr>
                         <th>#</th>
@@ -50,7 +53,12 @@
                                 <td>{{$d}}</td>
                                 <td style="text-transform: capitalize;">{{$item->name}}</td>
                                 <td > {{$item->location}} </td>
-                                <td>0</td>
+                                <td>
+                                    @php
+                                        $student = student::where('school',$item->id)->get();
+                                    @endphp
+                                    {{count($student)}}
+                                </td>
                                 <td>
                                     <a href="{{route('viewschool',[$item->id])}}" title="View Details" class="btn btn-primary"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
                                     <a href="" title="Edit Details" class="btn btn-warning"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>

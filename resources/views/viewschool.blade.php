@@ -6,7 +6,7 @@
         <div class="card-body">
             <h5 class="card-title" style="text-transform:capitalize;">Registered Students - {{$school['name']}} </h5>
             <hr>
-            <a href="{{route('newstudent')}}" class="btn btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i> Add new student</a>
+            <a href="{{route('newstudent',[$school['id']])}}" class="btn btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i> Add new student</a>
 
         </div>
     </div> <br>
@@ -30,7 +30,7 @@
        <div class="card-body">
            <p class="card-text">
                @if (count($student)>1)
-               <table class="table table-light">
+               <table class="table table-light table-striped">
                 <thead class="thead-light">
                     <tr>
                         <th>#</th>
@@ -38,7 +38,7 @@
                         <th>Age</th>
                         <th>Class</th>
                         <th>Stream</th>
-                        <th>Registerd By</th>
+                        <th class="text-left">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,15 +49,15 @@
 
                             <tr>
                                 <td>{{$d}}</td>
-                                <td style="text-transform: capitalize;"></td>
-                                <td >  </td>
-                                <td>0</td>
-                                <td>
+                                <td style="text-transform: capitalize;"> {{$item->name}} </td>
+                                <td > {{$item->age}} </td>
+                                <td> {{$item->class}} </td>
+                                <td> {{$item->stream}} </td>
+                                <td class="text-left" >
                                     <a href="" title="View Details" class="btn btn-primary"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
                                     <a href="" title="Edit Details" class="btn btn-warning"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
                                     <a href="" title="Delete" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
                                 </td>
-                                <td></td>
                             </tr>
 @php
     $d++;

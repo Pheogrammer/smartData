@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    use App\student;
+    use App\school;
+    use App\user;
+
+    $student = student::get();
+    $school = school::get();
+    $trainer = user::get();
+@endphp
 <div class="container">
     @if(Session::has('message'))
             <div class="alert alert-success">
@@ -28,7 +37,7 @@
                             <p class="card-text">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <span class="btn badge-primary"> <b>12</b> </span>
+                                        <span class="btn badge-primary"> <b>{{count($school)}}</b> </span>
 
                                     </div>
                                     <div class="col">
@@ -62,11 +71,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Teams</h5>
+                            <h5 class="card-title">Students</h5>
                             <p class="card-text">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <span class="btn badge-primary"> <b>12</b> </span>
+                                        <span class="btn badge-primary"> <b>{{count($student)}}</b> </span>
 
                                     </div>
                                     <div class="col">

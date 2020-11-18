@@ -24,7 +24,9 @@ Route::get('newschool', 'SchoolController@newschool')->name('newschool')->middle
 Route::post('savenewschool','SchoolController@savenewschool')->name('savenewschool')->middleware('auth');
 Route::get('schools','SchoolController@schools')->name('schools')->middleware('auth');
 
+Route::post('savestudent','StudentController@savestudent')->name('savestudent')->middleware('auth');
+
 Route::get('viewschool/{id}','SchoolController@viewschool')->name('viewschool')->middleware('auth');
-Route::get('newstudent','StudentController@newstudent')->name('newstudent')->middleware('auth');
+Route::get('newstudent/{id}','StudentController@newstudent')->name('newstudent')->middleware('auth');
 ////
 
